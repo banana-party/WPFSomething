@@ -42,16 +42,15 @@ namespace LastLessionWPF.ViewModels
 					if(!string.IsNullOrEmpty(str))
 						Schoolers.Add(Parser.Parse(str));
 				}
-			}	
+			}
 		}
 		public void Dispose()
 		{
 			_stream.Close();
 		}
-		public Command EditCommand => new Command(EditStudent);
-		public void EditStudent()
+		public Command EditCommand => new Command(EditSchooler);
+		public void EditSchooler()
 		{
-
 		}
 	}
 }

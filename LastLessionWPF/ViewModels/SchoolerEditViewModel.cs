@@ -21,15 +21,8 @@ namespace LastLessionWPF.ViewModels
 				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Schooler"));
 			}
 		}
-		public SchoolerEditViewModel()
+		public SchoolerEditViewModel(Schooler schooler)
 		{
-			Schooler = new Schooler()
-			{
-				Name = "gsdg",
-				Age = 12,
-				Avg = 3,
-				Group = "123"
-			};
 		}
 	}
 }
