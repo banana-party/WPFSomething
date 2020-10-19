@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LastLessionWPF.Base
 {
-	class Schooler
+	public class Schooler
 	{
 		public string Name { get; set; }
 		public string Group { get; set; }

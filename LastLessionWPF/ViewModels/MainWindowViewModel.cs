@@ -1,9 +1,11 @@
 ﻿using LastLessionWPF.Base;
 using LastLessionWPF.Commands;
+using LastLessionWPF.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Windows.Navigation;
 
 namespace LastLessionWPF.ViewModels
 {
@@ -31,8 +33,9 @@ namespace LastLessionWPF.ViewModels
 				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Schoolers"));
 			}
 		}
-		public MainWindowViewModel()
+		public MainWindowViewModel(INavigationService navigationService)
 		{
+			_navigationService = navigationService;
 			Schoolers = new List<Schooler>();
 			using (_stream = new StreamReader("Schoolers.txt"))
 			{
@@ -49,8 +52,11 @@ namespace LastLessionWPF.ViewModels
 			_stream.Close();
 		}
 		public Command EditCommand => new Command(EditSchooler);
+		private INavigationService _navigationService;
 		public void EditSchooler()
 		{
+			_navigationService.Navigate(SelectedScooler);
+			SelectedScooler = null;
 		}
 	}
 }
