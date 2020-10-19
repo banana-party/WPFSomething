@@ -55,7 +55,7 @@ namespace LastLessionWPF.ViewModels
 		private INavigationService _navigationService;
 		public void EditSchooler()
 		{
-			_navigationService.Navigate(SelectedScooler);
+			_navigationService.Navigate<SchoolerEditViewModel>(vm => vm.Schooler = SelectedScooler);
 			SelectedScooler = null;
 		}
 	}

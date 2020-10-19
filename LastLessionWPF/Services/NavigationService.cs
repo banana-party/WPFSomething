@@ -2,6 +2,7 @@
 using LastLessionWPF.Delegates;
 using LastLessionWPF.Interfaces;
 using LastLessionWPF.ViewModels;
+using System.ComponentModel;
 
 namespace LastLessionWPF.Services
 {

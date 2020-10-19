@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:LastLessionWPF"
 		xmlns:viewmodels="clr-namespace:LastLessionWPF.ViewModels"
         mc:Ignorable="d"
-        Title="SchoolerEditView" Height="270" Width="500" ResizeMode="NoResize">
+        Title="SchoolerEditView" Height="270" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
 	<Window.DataContext>
 		<viewmodels:SchoolerEditViewModel />
 	</Window.DataContext>
