@@ -15,7 +15,6 @@ namespace LastLessionWPF.Commands
 		{
 			return true;
 		}
-
 		public void Execute(object parameter)
 		{
 			_action?.Invoke();

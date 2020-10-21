@@ -6,13 +6,14 @@
         xmlns:local="clr-namespace:LastLessionWPF"
 		xmlns:viewmodels="clr-namespace:LastLessionWPF.ViewModels"
         mc:Ignorable="d"
-        Title="SchoolerEditView" Height="270" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+        Title="SchoolerEditView" Height="270" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" x:Name="Window">
 	<Window.DataContext>
 		<viewmodels:SchoolerEditViewModel />
 	</Window.DataContext>
 	<Window.Resources>
 		<Style TargetType="Button">
 			<Setter Property="Margin" Value="10"/>
+			<Setter Property="DataContext" Value="{Binding ElementName=Window, Path=DataContext}"/>
 		</Style>
 		<Style TargetType="TextBox">
 			<Setter Property="Margin" Value="13"/>
@@ -51,7 +52,7 @@
 				<ColumnDefinition Width="*"/>
 			</Grid.ColumnDefinitions>
 			<Button Grid.Column="0">Сохранить</Button>
-			<Button Grid.Column="1">Отмена</Button>
+			<Button Grid.Column="1" Command="{Binding CancelCommand, Mode=OneWay}">Отмена</Button>
 		</Grid>
 		
 	</Grid>
