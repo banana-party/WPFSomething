@@ -60,7 +60,9 @@
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Converter\SchoolerToBoolConverter.cs" />
     <Compile Include="Delegates\NavigationActionDelegate.cs" />
+    <Compile Include="Interfaces\IDialogService.cs" />
     <Compile Include="Interfaces\INavigationService.cs" />
+    <Compile Include="Services\DialogService.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\SchoolerEditViewModel.cs" />

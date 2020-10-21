@@ -1,5 +1,7 @@
 ﻿using LastLessionWPF.Base;
 using LastLessionWPF.Commands;
+using LastLessionWPF.Interfaces;
+using LastLessionWPF.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,13 +27,29 @@ namespace LastLessionWPF.ViewModels
 		}
 		public SchoolerEditViewModel()
 		{
-
+			_dialogService = new DialogService();
 		}
 		public Command CancelCommand => new Command(Cancel);
+		public Command SaveCommand => new Command(Save);
+
+
+		private IDialogService _dialogService;
+		public void Save()
+		{
+			bool save = _dialogService.ShowQuestion("Вы уверены?", "Сохранить изменения.");
+			if (!save)
+				return;
+
+			Close();
+		}
 		public void Cancel()
 		{
-			var result = MessageBox.Show("Вы уверены?", "Отменить изменения",MessageBoxButton.YesNo,MessageBoxImage.Question, MessageBoxResult.No, MessageBoxOptions.None);
-			if (result != MessageBoxResult.Yes) return;
+			bool close = _dialogService.ShowQuestion("Вы уверены?", "Отменить изменения.");
+			if(close)
+				Close();
+		}
+		private void Close()
+		{
 			Window window = null;
 			foreach (var el in App.Current.Windows)
 			{
