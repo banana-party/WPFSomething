@@ -60,6 +60,8 @@
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Converter\SchoolerToBoolConverter.cs" />
     <Compile Include="Delegates\NavigationActionDelegate.cs" />
+    <Compile Include="Delegates\SchoolerChangedEventHandler.cs" />
+    <Compile Include="EventArgs\SchoolerChangedEventArgs.cs" />
     <Compile Include="Interfaces\IDialogService.cs" />
     <Compile Include="Interfaces\INavigationService.cs" />
     <Compile Include="Services\DialogService.cs" />

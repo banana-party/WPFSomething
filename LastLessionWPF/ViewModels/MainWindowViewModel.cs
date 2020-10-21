@@ -1,11 +1,12 @@
 ﻿using LastLessionWPF.Base;
 using LastLessionWPF.Commands;
+using LastLessionWPF.EventArgs;
 using LastLessionWPF.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using System.Windows.Navigation;
+
 
 namespace LastLessionWPF.ViewModels
 {
@@ -55,10 +56,16 @@ namespace LastLessionWPF.ViewModels
 		private INavigationService _navigationService;
 		public void EditSchooler()
 		{
-		
-			
-			_navigationService.Navigate<SchoolerEditViewModel>(vm => vm.Schooler = _selectedScooler.Clone() as Schooler);
+			_navigationService.Navigate<SchoolerEditViewModel>(vm => vm.OnNavigate(SelectedScooler, SchoolerChanged));
 			SelectedScooler = null;
 		}
+
+		private void SchoolerChanged(object sender, SchoolerChangedEventArgs args)
+		{
+			var index = Schoolers.IndexOf(args.OldSchooler);
+			Schoolers[index].Clone(args.NewSchooler);
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Schoolers"));
+		}
+
 	}
 }

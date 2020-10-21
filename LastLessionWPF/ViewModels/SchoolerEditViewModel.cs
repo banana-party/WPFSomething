@@ -1,5 +1,7 @@
 ﻿using LastLessionWPF.Base;
 using LastLessionWPF.Commands;
+using LastLessionWPF.Delegates;
+using LastLessionWPF.EventArgs;
 using LastLessionWPF.Interfaces;
 using LastLessionWPF.Services;
 using System;
@@ -14,6 +16,7 @@ namespace LastLessionWPF.ViewModels
 {
 	class SchoolerEditViewModel : INotifyPropertyChanged
 	{
+		public event SchoolerChangedEventHandler SchoolerChanged;
 		public event PropertyChangedEventHandler PropertyChanged;
 		private Schooler _schooler;
 		public Schooler Schooler
@@ -39,7 +42,7 @@ namespace LastLessionWPF.ViewModels
 			bool save = _dialogService.ShowQuestion("Вы уверены?", "Сохранить изменения.");
 			if (!save)
 				return;
-
+			SchoolerChanged?.Invoke(this, new SchoolerChangedEventArgs(oldSchooler:_oldSchooler, newSchooler:Schooler));
 			Close();
 		}
 		public void Cancel()
@@ -61,5 +64,15 @@ namespace LastLessionWPF.ViewModels
 			}
 			window?.Close();
 		}
+		private Schooler _oldSchooler;
+		public void OnNavigate(Schooler schooler, SchoolerChangedEventHandler handler)
+		{
+			_oldSchooler = schooler;
+			Schooler = schooler.Clone() as Schooler;
+			if (Schooler == null)
+				return;
+			SchoolerChanged += handler;
+		}
+
 	}
 }
